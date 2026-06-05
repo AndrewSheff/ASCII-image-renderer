@@ -15,20 +15,29 @@ chmod +x build.sh
 ```
 
 # Usage
+
+Interactive mode
 `
-./renderer <filename.ppm> [inter]
+./renderer
+`
+CLI mode
+`
+./renderer <filename.ppm> [--width N] [--height N] [--no-proportions] [--inter]
 `
 | Argument	| Description |
 | --- | --- |
 |filename.ppm	|Path to PPM file (P6 binary format)|
-|inter|	Enable interpolation (smoothing) |
+|--width N| Width in ASCII char |
+|--height N| Height in ASCII char |
+|--no-proportions| Off original proportions of image |
+|--inter|	Enable interpolation (smoothing) |
 
 # Examples
 
 | Without interpolation | With interpolation |
 | --- | --- |
 | <img width="307" height="426" alt="without_inter" src="https://github.com/user-attachments/assets/98a9932d-60d0-41e1-879e-e9164d2184a2" /> | <img width="307" height="426" alt="inter" src="https://github.com/user-attachments/assets/dc5e5cec-838c-4596-b619-04502bc5d4b7" /> |
-|./renderer test.ppm|./renderer test.ppm inter|
+|./renderer test.ppm|./renderer test.ppm --inter|
 
 # Requirements
 
