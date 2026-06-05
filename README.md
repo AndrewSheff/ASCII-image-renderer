@@ -17,10 +17,13 @@ chmod +x build.sh
 # Usage
 
 Interactive mode
+
 `
 ./renderer
 `
+
 CLI mode
+
 `
 ./renderer <filename.ppm> [--width N] [--height N] [--no-proportions] [--inter]
 `
