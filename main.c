@@ -256,7 +256,7 @@ int main(int argc, char *argv[])
 
     if (proportions || !is_width || !is_height)
     {
-        if (!(is_width ^ is_height))
+        if ((is_width = is_height))
         {
             r_divider = c_divider = c_divider<r_divider?c_divider:r_divider;
             c_divider*=2;
