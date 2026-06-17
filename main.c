@@ -80,7 +80,7 @@ void postprocess(float c_divider, float r_divider, int w_row, int w_col, struct 
                 int count = 0;
                 for (int i=0; i<file_header.rows/w_row; i++)
                 {
-                    if (r-i<0)
+                    if (r-i>=0)
                     {
                         count++;
                         red = red + original_colors[r-i][c].red;
@@ -94,14 +94,14 @@ void postprocess(float c_divider, float r_divider, int w_row, int w_col, struct 
                         green = green + original_colors[r+i][c].green;
                         blue = blue + original_colors[r+i][c].blue;
                     }
-                    if (c-i<0)
+                    if (c-i>=0)
                     {
                         count++;
                         red = red + original_colors[r][c-i].red;
                         green = green + original_colors[r][c-i].green;
                         blue = blue + original_colors[r][c-i].blue;
                     }
-                    if (c+i<=file_header.rows)
+                    if (c+i<=file_header.columns)
                     {
                         count++;
                         red = red + original_colors[r][c+i].red;
@@ -203,7 +203,10 @@ int main(int argc, char *argv[])
     {
         for (int i = 1; i<argc; i++)
         {
-            is_inter = strstr(argv[i],"--inter") != NULL;
+            if (strstr(argv[i],"--inter"))
+            {
+                is_inter = 1;
+            }
             if (strstr(argv[i],".ppm"))
             {
                 filename = argv[i];
@@ -216,7 +219,7 @@ int main(int argc, char *argv[])
             else if (strstr(argv[i], "--height"))
             {
                 i++;
-                height = atoi(argv[i++]);
+                height = atoi(argv[i]);
             }
             else if (strstr(argv[i], "--no-proportion"))
             {
