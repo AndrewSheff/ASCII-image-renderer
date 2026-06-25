@@ -8,8 +8,8 @@
 #define GREEN "\e[38;2;0;255;0m"
 #define RED "\e[38;2;255;0;0m"
 
-void set_mode(int enable_raw);
-char get_c();
+void set_mode(int enable_raw); // Switch CANONICAL and NON-CANONICAL input
+char get_c(); // Read user short answer
 void clear();
 
 
