@@ -140,7 +140,7 @@ void choose_file(char* filename)
 
     while ((entry = readdir(dir)) != NULL) // As long as there are files in the directory
     {
-        if (strstr(entry->d_name, ".ppm")) // If file in format .ppm
+        if (strstr(entry->d_name, ".ppm")) // If  file in format .ppm
         {
             printf("[%d] %s\n", i, entry->d_name); 
             // Example: [0] test.ppm
