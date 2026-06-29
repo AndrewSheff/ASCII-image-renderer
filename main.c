@@ -56,7 +56,7 @@ void get_colors(FILE *file, struct file_header file_header, struct color colors[
                     {
                         color.green = fgetc(file); // Read G value...
                         break;
-                    } // ...as a char
+                    } // ...as a byte (char)
                 }
             }
             colors[r][c] = color; // Save pixel
@@ -66,7 +66,7 @@ void get_colors(FILE *file, struct file_header file_header, struct color colors[
 
 void postprocess(float c_divider, float r_divider, int w_row, int w_col, 
     struct color colors[w_row][w_col], struct file_header file_header, struct color original_colors[file_header.rows][file_header.columns], 
-    int interpolation)
+    int interpolation) // Convert array read from file into colors array and add interpolation(optional)
 {
     for (int w_r=0; w_r<w_row; w_r++)
     {
@@ -126,9 +126,6 @@ void postprocess(float c_divider, float r_divider, int w_row, int w_col,
         }
     }
 }
-
-// -------------------------------------------------------------------
-// TERMINAL PARAMS OPTIONS
 
 void choose_file(char* filename)
 {
@@ -194,8 +191,6 @@ short choose_inter()
     return get_c()=='y';
 }
 
-// -------------------------------------------------------------------
-
 int main(int argc, char *argv[]) // argc - number of args, argv[] - themselves
 {
 
@@ -208,7 +203,7 @@ int main(int argc, char *argv[]) // argc - number of args, argv[] - themselves
     // Terminal writing params
 
     short is_inter = 0;
-    int width = 0; // Cols
+    int width = 0; // Columns
     int height = 0; // Rows
     short proportions = 1;
 
